@@ -52,4 +52,17 @@ def LandDrone():
 		time.sleep(1)
 
 arm_and_takeoff(20)
-LandDrone()
+
+drone.airspeed = 10
+
+print("Battery: %f" % drone.battery.voltage)
+print("Moving to Waypoint 1...")
+waypoint1 = LocationGlobalRelative(-35.362180, 149.165094, 20)
+drone.simple_goto(waypoint1)
+
+time.sleep(30)
+
+drone.mode = VehicleMode("RTL")
+
+# Commented out because RTL lands the drone automatically
+#LandDrone()
